@@ -20,7 +20,7 @@ First change directory to the downloaded proect.
 The code can be executed as
 
 ```
-node leetcode/array/01-sum-of-two/01-sum-of-two.mjs
+node leetcode/array/01-sum-of-two/sum-of-two.mjs
 ```
 
 
