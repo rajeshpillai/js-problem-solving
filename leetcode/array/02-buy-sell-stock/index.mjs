@@ -36,24 +36,24 @@ Constraints:
  * @return {number}
  */
 var maxProfit = function(prices) {
-  let min = prices[0];
+  if (prices.length === 0) return 0;
+
+  let minPrice = prices[0];
   
-  let max = 0;
-  let minIndex= 0;
-
-  for (let i = 0; i < prices.length; i++) {
-    let buy = prices[i];
-    let nextSell = Math.max(...prices.slice(i+1));
-    let profit = nextSell - buy;
-
-    if (profit > max) {
-      max = profit;
+  let maxProfit = 0;
+  
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < minPrice) {
+      minPrice = prices[i];
+    } else if (prices[i] - minPrice > maxProfit) {
+      maxProfit = prices[i] - minPrice;
     }
-
-    console.log(`buy: ${buy}, nextSell: ${nextSell} -> profit: ${profit} -> max: ${max}`);
+    if (prices.length <= 10) {
+      console.log(`minPrice: ${minPrice}, maxProfit: ${maxProfit}`);
+    }
   }
   
-  return max;    
+  return maxProfit;    
 };
 
 console.log(maxProfit([7,1,5,3,6,4]) == 5);
