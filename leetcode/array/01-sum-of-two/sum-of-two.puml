@@ -1,0 +1,15 @@
+@startuml
+title "Input Array  [2,1,5,3] -> Target 4"
+Caption Value and Index is stored in the Map
+
+label B [
+  {{json
+    {
+      "2": 0,
+      "1": 1,
+      "5": 2,
+      "3": 3
+    }
+  }}
+]
+@enduml
