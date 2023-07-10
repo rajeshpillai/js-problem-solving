@@ -35,26 +35,34 @@ Constraints:
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
-  if (prices.length === 0) return 0;
-
-  let minPrice = prices[0];
-  
-  let maxProfit = 0;
-  
-  for (let i = 1; i < prices.length; i++) {
-    if (prices[i] < minPrice) {
-      minPrice = prices[i];
-    } else if (prices[i] - minPrice > maxProfit) {
-      maxProfit = prices[i] - minPrice;
-    }
-    if (prices.length <= 10) {
-      console.log(`minPrice: ${minPrice}, maxProfit: ${maxProfit}`);
-    }
+ var maxProfit = function(prices) {
+  // If the prices array is empty, we return 0 as no profit can be made.
+  if (prices.length === 0) {
+      return 0;
   }
-  
-  return maxProfit;    
+
+  // Initialize minPrice with the first price and maxProfit as 0.
+  let minPrice = prices[0];
+  let maxProfit = 0;
+
+  // Iterate over the prices array.
+  for (let i = 1; i < prices.length; i++) {
+      // If current price is less than the minPrice encountered so far,
+      // update the minPrice.
+      if (prices[i] < minPrice) {
+          minPrice = prices[i];
+      } 
+      // If the profit that can be made by selling at the current price is
+      // more than the maxProfit so far, update the maxProfit.
+      else if (prices[i] - minPrice > maxProfit) {
+          maxProfit = prices[i] - minPrice;
+      }
+  }
+
+  // Return the maximum profit that can be made.
+  return maxProfit;
 };
+
 
 console.log(maxProfit([7,1,5,3,6,4]) == 5);
 console.log(maxProfit([2,7,5,3,6,1]) == 5);
